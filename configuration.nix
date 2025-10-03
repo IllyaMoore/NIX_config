@@ -107,16 +107,6 @@
     defaultEditor = true;
   };
   
-  # Python packages
-  programs.nix-ld = {
-    enable = true;
-    libraries = with pkgs; [
-      stdenv
-      libgcc
-      libllvm
-      portaudio # Here it is!
-    ];
-  };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -126,12 +116,7 @@
 	wget
 	brave
 	git
-	vscode
 	python3
-	python311Packages.pip
-	ripgrep
-	fd
-	portaudio
 	rustc
 	cargo
 	gcc
