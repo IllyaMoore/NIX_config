@@ -47,7 +47,7 @@
 
   # Enable KDE Plasma
   services.desktopManager.plasma6.enable = true; 
-  services.xserver.displayManager.sddm.enable = true;
+  services.displayManager.sddm.enable = true;
 
   # Enable the GNOME Desktop Environment.
   #services.xserver.displayManager.gdm.enable = true;
@@ -106,7 +106,17 @@
     enable = true;
     defaultEditor = true;
   };
-
+  
+  # Python packages
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [
+      stdenv
+      libgcc
+      libllvm
+      portaudio # Here it is!
+    ];
+  };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -122,6 +132,10 @@
 	ripgrep
 	fd
 	portaudio
+	rustc
+	cargo
+	gcc
+	
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
